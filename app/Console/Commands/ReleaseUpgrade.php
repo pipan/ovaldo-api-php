@@ -12,6 +12,10 @@ class ReleaseUpgrade extends Command
 
     public function handle()
     {
+        if (!file_exists('current')) {
+            $this->error('link to current release does not exists');
+            return;
+        }
         $this->info("Upgrading to next release");
         $currentVersion = (int) basename(readlink('current'));
         $nextVersion = $currentVersion + 1;
