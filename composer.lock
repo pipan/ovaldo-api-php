@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fac753ae2702317b354e7eb283f28cbc",
+    "content-hash": "7c21a83e9019ee69d04236e4e8649c34",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1686,6 +1686,95 @@
                 "source": "https://github.com/opis/closure/tree/3.6.1"
             },
             "time": "2020-11-07T02:01:34+00:00"
+        },
+        {
+            "name": "outsourced/log-monolog",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pipan/log-outsourced-monolog.git",
+                "reference": "f6d34036b1a9df2a85b45e23f03f7c57d5512da3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pipan/log-outsourced-monolog/zipball/f6d34036b1a9df2a85b45e23f03f7c57d5512da3",
+                "reference": "f6d34036b1a9df2a85b45e23f03f7c57d5512da3",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^2.1",
+                "outsourced/sdk": "^0.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LogOutsourcedMonolog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Monolog extension handler for outsourced logging",
+            "keywords": [
+                "log",
+                "logging",
+                "monolog",
+                "outsourced"
+            ],
+            "support": {
+                "issues": "https://github.com/pipan/log-outsourced-monolog/issues",
+                "source": "https://github.com/pipan/log-outsourced-monolog/tree/v0.3.0"
+            },
+            "time": "2020-12-02T22:42:43+00:00"
+        },
+        {
+            "name": "outsourced/sdk",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pipan/log-outsourced-php-sdk.git",
+                "reference": "211b06ff281b90b5a2c9e61e7f0bb6bcb1ae20a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pipan/log-outsourced-php-sdk/zipball/211b06ff281b90b5a2c9e61e7f0bb6bcb1ae20a6",
+                "reference": "211b06ff281b90b5a2c9e61e7f0bb6bcb1ae20a6",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.2",
+                "guzzlehttp/psr7": "^1.7",
+                "php": "^7.2",
+                "psr/http-client": "^1.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OutsourcedSdk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP SDK for Outsourced API",
+            "keywords": [
+                "library",
+                "log",
+                "logging",
+                "outsourced",
+                "permissions"
+            ],
+            "support": {
+                "issues": "https://github.com/pipan/log-outsourced-php-sdk/issues",
+                "source": "https://github.com/pipan/log-outsourced-php-sdk/tree/v0.3.0"
+            },
+            "time": "2020-12-02T22:39:11+00:00"
         },
         {
             "name": "phpoption/phpoption",
