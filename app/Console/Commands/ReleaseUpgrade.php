@@ -23,7 +23,18 @@ class ReleaseUpgrade extends Command
         $this->info('installing dependencies');
         $cmd = 'composer install --no-dev -o -d releases' . DIRECTORY_SEPARATOR . $nextVersion;
         exec($cmd);
+
+        $this->info('coping enviroment config');
+        $this->cp(['releases', $currentVersion, '.env'], ['releases', $nextVersion, '.env']);
+
         exec('ln -sfn releases' . DIRECTORY_SEPARATOR . $nextVersion . ' current');
         $this->info("Upgrade successful");
+    }
+
+    private function cp($source, $destination)
+    {
+        $sourcePath = implode(DIRECTORY_SEPARATOR, $source);
+        $destinationPath = implode(DIRECTORY_SEPARATOR, $destination);
+        exec('cp ' . $sourcePath . ' ' . $destinationPath);
     }
 }
