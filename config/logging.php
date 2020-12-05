@@ -62,6 +62,15 @@ return [
             'level' => env('LOG_LEVEL', 'critical'),
         ],
 
+        'outsourced' => [
+            'driver'  => 'monolog',
+            'handler' => LogOutsourcedMonolog\LogOutsourcedHandler::class,
+            'with' => [
+                'host' => env('OUTSOURCED_HOST'),
+                'accessKey' => env('OUTSOURCED_ACCESS_KEY')
+            ],
+        ],
+
         'papertrail' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),
