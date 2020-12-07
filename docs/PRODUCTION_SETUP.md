@@ -13,6 +13,11 @@ ln -s releases/1 current
 
 ln -s current/artisan artisan
 
+mkdir public
+mkdir public/.well-known
+cd public
+ln -s ../current/public current
+
 php artisan key:generate --ansi
 echo "Installation successful"
 

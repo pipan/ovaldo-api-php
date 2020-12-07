@@ -35,7 +35,7 @@ class ReleaseUpgrade extends Command
         $this->info('coping enviroment config');
         $this->cp(['releases', $currentVersion, '.env'], ['releases', $nextVersion, '.env']);
 
-        exec('ln -sfn releases' . DIRECTORY_SEPARATOR . $nextVersion . DIRECTORY_SEPARATOR . 'public' . ' public/current');
+        exec('ln -sfn releases' . DIRECTORY_SEPARATOR . $nextVersion . ' current');
         $this->info("Upgrade successful");
     }
 
