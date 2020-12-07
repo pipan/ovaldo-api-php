@@ -3,6 +3,8 @@
 namespace App\Integration\Zomato;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Log;
 
 class ZomatoApi
 {
@@ -42,11 +44,20 @@ class ZomatoApi
         ];
         $headers = ['user-key' => $this->key];
         
-        $client = new Client();
-        $response = $client->get('https://developers.zomato.com/api/v2.1/dailymenu', [
-            'query' => $body,
-            'headers' => $headers
-        ]);
-        return json_decode($response->getBody()->getContents(), true);
+        try {            
+            $client = new Client();
+            $response = $client->get('https://developers.zomato.com/api/v2.1/dailymenu', [
+                'query' => $body,
+                'headers' => $headers
+            ]);
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            if (!$e->hasResponse()){
+                Log::warning("Zomato: cannot get daily menu", [
+                    'resource' => $resIs
+                ]);
+            }
+        }
+        return [];
     }
 }
