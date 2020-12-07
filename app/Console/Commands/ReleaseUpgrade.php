@@ -28,10 +28,14 @@ class ReleaseUpgrade extends Command
         $cmd = 'composer install --no-dev -o -d releases' . DIRECTORY_SEPARATOR . $nextVersion;
         exec($cmd);
 
+        $this->info('setup storage permissions');
+        $cmd = 'chmod -R 777 releases' . DIRECTORY_SEPARATOR . $nextVersion . DIRECTORY_SEPARATOR . 'storage';
+        exec($cmd);
+
         $this->info('coping enviroment config');
         $this->cp(['releases', $currentVersion, '.env'], ['releases', $nextVersion, '.env']);
 
-        exec('ln -sfn releases' . DIRECTORY_SEPARATOR . $nextVersion . ' current');
+        exec('ln -sfn releases' . DIRECTORY_SEPARATOR . $nextVersion . DIRECTORY_SEPARATOR . 'public' . ' public/current');
         $this->info("Upgrade successful");
     }
 
