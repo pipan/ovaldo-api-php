@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use App\Http\ResponseError;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -38,7 +39,10 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            
+            Log::error($e->getMessage(), [
+                'trace' => $e->getTrace()
+            ]);
+            return false;
         });
 
         $this->renderable(function (MethodNotAllowedHttpException $e, $request) {
@@ -50,7 +54,7 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function (Exception $e, $request) {
-            return ResponseError::error($$e);
+            return ResponseError::error($e);
         });
     }
 }
